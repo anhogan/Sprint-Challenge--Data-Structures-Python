@@ -43,15 +43,17 @@ class LinkedList:
         if self.head is None:
             return
 
-        # Find the last node, set it to head, and reverse it's next pointer to be previous
+        # If it's the last node, set it to head, and reverse it's next pointer to be previous
         if node.next_node is None:
             self.head = node
             node.next_node = prev
             return
         
-        # Next node to evaluate starts at the node.next and move it once each time to loop through the list
+        # Else, we have pointers: 
+        # next to evaluate the start node's next value to be able to hit each element in the list
+        # node.next_node set to the prev value of the current node, essentially reversing it's arrow (initialized as None if called on head node)
         next = node.next_node
-        # Set node.next to be the prev value, essentially reversing it's arrow
         node.next_node = prev
-        # Recursive solution
+
+        # Recursive solution to move through the nodes in the list
         self.reverse_list(next, node)

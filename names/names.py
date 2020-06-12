@@ -13,6 +13,7 @@ f.close()
 duplicates = []  # Return the list of duplicates in this data structure
 
 # Replace the nested for loops below with your improvements
+# Current runtime complexity: O(n^2)
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
@@ -51,9 +52,11 @@ class NamesBST:
                 return self.left.contains(target)
 
 names_search_tree = NamesBST(names_1[0])
+# Runtime complexity: O(n)
 for name in names_1:
     names_search_tree.insert(name)
 
+#Runtime complexity: O(log n)
 for name in names_2:
     if names_search_tree.contains(name):
         duplicates.append(name)
